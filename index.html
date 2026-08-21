@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ads Helper — Privacy Policy</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      font: 16px/1.7 system-ui, -apple-system, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #0f0f10; color: #e5e5e5; }
+      a { color: #60a5fa; }
+      code { background: #1e1e24; }
+    }
+
+    h1 { font-size: 1.6rem; font-weight: 700; margin: 0 0 4px; }
+    h2 { font-size: 1.1rem; font-weight: 600; margin: 36px 0 8px; }
+    p  { margin: 0 0 16px; }
+    ul { margin: 0 0 16px; padding-left: 24px; }
+    li { margin-bottom: 6px; }
+
+    .meta { font-size: 0.85rem; color: #666; margin-bottom: 32px; }
+    @media (prefers-color-scheme: dark) { .meta { color: #999; } }
+
+    code {
+      font-family: ui-monospace, monospace;
+      font-size: 0.88em;
+      background: #f3f4f6;
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+
+    strong { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Ads Helper &mdash; Privacy Policy</h1>
+  <p class="meta">Last updated: August 21, 2026</p>
+
+  <p>Ads Helper is a bulk-editing tool for the ad platform editors of Google Ads, Microsoft Advertising, Meta Ads Manager, and LinkedIn Campaign Manager. It is designed so that <strong>no data ever leaves your browser</strong> except requests to the ad platforms you are already using.</p>
+
+  <h2>What the extension collects</h2>
+  <p><strong>Nothing.</strong> Ads Helper has no servers, no analytics, no tracking, and no third-party services. It never transmits any information to the developer or to anyone else.</p>
+
+  <h2>What the extension stores on your device</h2>
+  <ul>
+    <li>Your two popup preferences (whether ads tabs refresh after an extension reload, and whether &ldquo;Copy ads as images&rdquo; is enabled).</li>
+    <li>Undo history for bulk edits (for example, campaign names with their previous and new values) so the Undo button can restore prior values. This is stored locally in your browser and never transmitted.</li>
+  </ul>
+
+  <h2>Authentication data</h2>
+  <p>When you use the Meta Ads Manager report feature, the extension reuses the session credential that Ads Manager itself has already created in your browser. That credential is:</p>
+  <ul>
+    <li>read from the page&rsquo;s own network activity, only at the moment you click the report button;</li>
+    <li>sent <strong>only</strong> to Meta&rsquo;s own Ads Manager API server (<code>adsmanager-graph.facebook.com</code>) &mdash; the same server the page is already talking to &mdash; for read-only requests that fetch your report data;</li>
+    <li>never stored, logged, or sent anywhere else.</li>
+  </ul>
+  <p>The extension never sees or handles your passwords on any platform.</p>
+
+  <h2>Permissions</h2>
+  <ul>
+    <li><strong>Access to the four ad platform sites</strong> &mdash; required to add the bulk-editing buttons to those editors. The extension cannot run anywhere else.</li>
+    <li><strong>Storage</strong> &mdash; for the local preferences and undo history described above.</li>
+    <li><strong>webNavigation</strong> &mdash; used only by the &ldquo;Run diagnostic&rdquo; button to reach editor frames inside the current ads tab.</li>
+    <li><strong>Optional access to all sites</strong> &mdash; requested only if you switch on &ldquo;Copy ads as images&rdquo;, which needs Chrome&rsquo;s screen-capture permission. It is off by default and can be revoked at any time in the popup.</li>
+  </ul>
+
+  <h2>Changes and contact</h2>
+  <p>If this policy changes, the update will be published at this same address.<br>
+  Questions: <a href="mailto:deepak.kumar@acquia.com">deepak.kumar@acquia.com</a></p>
+</body>
+</html>
