@@ -4,78 +4,432 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ads Helper — Privacy Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    /* ── Ads Helper design tokens ── */
+    :root {
+      --accent:       #00A6FE;
+      --accent-dim:   #0090DD;
+      --bg:           #08080a;
+      --panel:        #121214;
+      --border:       #2c2c33;
+      --text:         #e5e5e5;
+      --text-strong:  #ffffff;
+      --text-muted:   #a3a3a3;
+      --text-faint:   #8f8f8f;
+      --code-bg:      #1a1a1e;
+      --ease:         cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --accent:      #0090DD;
+        --accent-dim:  #007ab8;
+        --bg:          #f7f7f8;
+        --panel:       #ffffff;
+        --border:      #d4d4d5;
+        --text:        #171717;
+        --text-strong: #000000;
+        --text-muted:  #4a4a52;
+        --text-faint:  #63636b;
+        --code-bg:     #f1f1f2;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.7 Mulish, "Segoe UI", system-ui, sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .wrap {
       max-width: 680px;
       margin: 0 auto;
-      padding: 48px 24px 80px;
-      font: 16px/1.7 system-ui, -apple-system, sans-serif;
-      color: #1a1a1a;
-      background: #fff;
+      padding: 0 24px 80px;
     }
 
-    @media (prefers-color-scheme: dark) {
-      body { background: #0f0f10; color: #e5e5e5; }
-      a { color: #60a5fa; }
-      code { background: #1e1e24; }
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
     }
 
-    h1 { font-size: 1.6rem; font-weight: 700; margin: 0 0 4px; }
-    h2 { font-size: 1.1rem; font-weight: 600; margin: 36px 0 8px; }
-    p  { margin: 0 0 16px; }
-    ul { margin: 0 0 16px; padding-left: 24px; }
-    li { margin-bottom: 6px; }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 24px 0;
+    }
 
-    .meta { font-size: 0.85rem; color: #666; margin-bottom: 32px; }
-    @media (prefers-color-scheme: dark) { .meta { color: #999; } }
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
 
+    .logo svg { width: 18px; height: 18px; }
+
+    .header-text h1 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-strong);
+      line-height: 1.2;
+    }
+
+    .header-text p {
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-top: 2px;
+    }
+
+    /* ── Zero-data callout ── */
+    .callout {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--panel);
+      margin-bottom: 40px;
+    }
+
+    .callout-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .callout-icon svg { width: 18px; height: 18px; color: var(--accent); }
+
+    .callout-body strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-strong);
+      margin-bottom: 4px;
+    }
+
+    .callout-body p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Sections ── */
+    section { margin-bottom: 40px; }
+
+    section h2 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .card p,
+    .card ul {
+      padding: 18px 20px;
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card ul li {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .card ul li:first-child { border-top: none; }
+
+    .card ul li::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-right: 10px;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    /* Auth section: three step pills */
+    .auth-steps {
+      padding: 0;
+    }
+
+    .auth-steps li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .auth-steps li:first-child { border-top: none; }
+
+    .auth-steps li::before { display: none; }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--accent) 15%, transparent);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    /* ── Inline code ── */
     code {
-      font-family: ui-monospace, monospace;
-      font-size: 0.88em;
-      background: #f3f4f6;
-      padding: 1px 5px;
-      border-radius: 4px;
+      font-family: ui-monospace, "SF Mono", Consolas, monospace;
+      font-size: 0.85em;
+      background: var(--code-bg);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      word-break: break-all;
+      overflow-wrap: anywhere;
     }
 
-    strong { font-weight: 600; }
+    /* ── Permissions grid ── */
+    .perms { display: grid; gap: 1px; background: var(--border); border-radius: 10px; overflow: hidden; }
+
+    .perm {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 20px;
+      background: var(--panel);
+    }
+
+    .perm-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .perm-icon svg { width: 15px; height: 15px; color: var(--accent); }
+
+    .perm-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 6px;
+      margin-bottom: 4px;
+    }
+
+    .perm-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .optional-badge { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 30%, transparent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      font-size: 13px;
+      color: var(--text-faint);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 180ms var(--ease);
+    }
+
+    footer a:hover { color: var(--accent-dim); }
+
+    strong { font-weight: 700; color: var(--text-strong); }
   </style>
 </head>
 <body>
-  <h1>Ads Helper &mdash; Privacy Policy</h1>
-  <p class="meta">Last updated: August 21, 2026</p>
+  <div class="wrap">
 
-  <p>Ads Helper is a bulk-editing tool for the ad platform editors of Google Ads, Microsoft Advertising, Meta Ads Manager, and LinkedIn Campaign Manager. It is designed so that <strong>no data ever leaves your browser</strong> except requests to the ad platforms you are already using.</p>
+    <!-- Header -->
+    <header>
+      <div class="header-inner">
+        <div class="logo" aria-hidden="true">
+          <!-- sparkle icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/>
+          </svg>
+        </div>
+        <div class="header-text">
+          <h1>Ads Helper</h1>
+          <p>Privacy Policy &mdash; last updated August 21, 2026</p>
+        </div>
+      </div>
+    </header>
 
-  <h2>What the extension collects</h2>
-  <p><strong>Nothing.</strong> Ads Helper has no servers, no analytics, no tracking, and no third-party services. It never transmits any information to the developer or to anyone else.</p>
+    <!-- Zero-data callout -->
+    <div class="callout" role="note">
+      <div class="callout-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <div class="callout-body">
+        <strong>No data ever leaves your browser</strong>
+        <p>Ads Helper has no servers, no analytics, and no third-party services. It never transmits information to the developer or to anyone else — only to the ad platforms you are already signed in to.</p>
+      </div>
+    </div>
 
-  <h2>What the extension stores on your device</h2>
-  <ul>
-    <li>Your two popup preferences (whether ads tabs refresh after an extension reload, and whether &ldquo;Copy ads as images&rdquo; is enabled).</li>
-    <li>Undo history for bulk edits (for example, campaign names with their previous and new values) so the Undo button can restore prior values. This is stored locally in your browser and never transmitted.</li>
-  </ul>
+    <!-- What it stores -->
+    <section aria-labelledby="stores-heading">
+      <h2 id="stores-heading">Stored on your device only</h2>
+      <div class="card">
+        <ul>
+          <li>Your popup preferences — whether ads tabs refresh after an extension reload, and whether <em>Copy ads as images</em> is enabled.</li>
+          <li>Undo history for bulk edits (for example, headline text with its previous and new values) so the Undo button can restore prior values. Stored locally in your browser, never transmitted.</li>
+        </ul>
+      </div>
+    </section>
 
-  <h2>Authentication data</h2>
-  <p>When you use the Meta Ads Manager report feature, the extension reuses the session credential that Ads Manager itself has already created in your browser. That credential is:</p>
-  <ul>
-    <li>read from the page&rsquo;s own network activity, only at the moment you click the report button;</li>
-    <li>sent <strong>only</strong> to Meta&rsquo;s own Ads Manager API server (<code>adsmanager-graph.facebook.com</code>) &mdash; the same server the page is already talking to &mdash; for read-only requests that fetch your report data;</li>
-    <li>never stored, logged, or sent anywhere else.</li>
-  </ul>
-  <p>The extension never sees or handles your passwords on any platform.</p>
+    <!-- Authentication / Meta -->
+    <section aria-labelledby="auth-heading">
+      <h2 id="auth-heading">Authentication data — Meta Ads Manager</h2>
+      <div class="card">
+        <p style="border-bottom: 1px solid var(--border);">When you use the Meta Ads Manager report export, the extension reuses the session credential Ads Manager has already placed in your browser. That credential is handled as follows:</p>
+        <ul class="auth-steps">
+          <li>
+            <span class="step-num" aria-hidden="true">1</span>
+            <span>Read from the page&rsquo;s own network activity, only at the moment you click the report button.</span>
+          </li>
+          <li>
+            <span class="step-num" aria-hidden="true">2</span>
+            <span>Sent <strong>only</strong> to Meta&rsquo;s own API server (<code>adsmanager-graph.facebook.com</code>) — the same server Ads Manager is already talking to — for read-only requests that fetch your report data.</span>
+          </li>
+          <li>
+            <span class="step-num" aria-hidden="true">3</span>
+            <span>Never stored, logged, or forwarded anywhere else. The extension never sees or handles your passwords on any platform.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-  <h2>Permissions</h2>
-  <ul>
-    <li><strong>Access to the four ad platform sites</strong> &mdash; required to add the bulk-editing buttons to those editors. The extension cannot run anywhere else.</li>
-    <li><strong>Storage</strong> &mdash; for the local preferences and undo history described above.</li>
-    <li><strong>webNavigation</strong> &mdash; used only by the &ldquo;Run diagnostic&rdquo; button to reach editor frames inside the current ads tab.</li>
-    <li><strong>Optional access to all sites</strong> &mdash; requested only if you switch on &ldquo;Copy ads as images&rdquo;, which needs Chrome&rsquo;s screen-capture permission. It is off by default and can be revoked at any time in the popup.</li>
-  </ul>
+    <!-- Permissions -->
+    <section aria-labelledby="perms-heading">
+      <h2 id="perms-heading">Permissions explained</h2>
+      <div class="perms" role="list">
 
-  <h2>Changes and contact</h2>
-  <p>If this policy changes, the update will be published at this same address.<br>
-  Questions: <a href="mailto:deepaksabharwaal@gmail.com">deepaksabharwaal@gmail.com</a></p>
+        <div class="perm" role="listitem">
+          <div class="perm-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <div>
+            <span class="perm-badge">4 ad platform sites</span>
+            <p class="perm-desc">Required to inject the bulk-editing UI into Google Ads, Microsoft Advertising, Meta Ads Manager, and LinkedIn Campaign Manager. The extension cannot run on any other site.</p>
+          </div>
+        </div>
+
+        <div class="perm" role="listitem">
+          <div class="perm-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="perm-badge">storage</span>
+            <p class="perm-desc">Saves the two popup preferences and your undo history locally in Chrome. Nothing is synced or uploaded.</p>
+          </div>
+        </div>
+
+        <div class="perm" role="listitem">
+          <div class="perm-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+            </svg>
+          </div>
+          <div>
+            <span class="perm-badge">webNavigation</span>
+            <p class="perm-desc">Used only by the <em>Run diagnostic</em> button to query editor frames inside the current ads tab. Not used at any other time.</p>
+          </div>
+        </div>
+
+        <div class="perm" role="listitem">
+          <div class="perm-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+          </div>
+          <div>
+            <span class="perm-badge optional-badge">optional — all sites</span>
+            <p class="perm-desc">Requested only if you enable <em>Copy ads as images</em> in the popup. Chrome&rsquo;s screen-capture API requires broad host access; without this toggle it is never requested. You can revoke it at any time from the popup.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <span>Questions? <a href="mailto:deepaksabharwaal@gmail.com">deepaksabharwaal@gmail.com</a></span>
+      <span>This page updates when the policy changes.</span>
+    </footer>
+
+  </div>
 </body>
 </html>
